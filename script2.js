@@ -11,6 +11,7 @@ class DiscountCalculator {
       calcularBtn: document.getElementById('calcular-btn'),
       cerrarBtn: document.getElementById('cerrar-btn'),
       btnClose: document.getElementById('btn-close'),
+      clrBtn: document.getElementById('clear-btn'),
     };
     this.init();
   }
@@ -43,6 +44,12 @@ class DiscountCalculator {
         e.preventDefault();
         this.elements.calcularBtn.focus();
         this.modal.hide();
+      });
+    }
+    if (this.elements.clrBtn) {
+      this.elements.clrBtn.addEventListener('click', () => {
+        this.limpiarDatos();
+        console.log('Limpiar datos');
       });
     }
 
@@ -93,6 +100,14 @@ class DiscountCalculator {
     const montos = this.calcularMontos(precio, descuento);
     this.actualizarUI(montos);
     this.abrirModal();
+  }
+
+  //Limpiar pantalla
+
+  limpiarDatos() {
+    // this.elements.precio = '';
+    // this.elements.descuento = '';
+    location.reload();
   }
 
   // Métodos para manejar el modal
